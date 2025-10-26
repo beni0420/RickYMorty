@@ -1,0 +1,51 @@
+.card {
+  position: relative;
+  width: 200px;
+  overflow: visible;
+  transition: box-shadow 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  z-index: 1;
+}
+
+.card:hover {
+  z-index: 10; /* aparece encima de todas las demás */
+}
+
+.card-image {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  will-change: transform;
+  border: 3px solid transparent; /* Inicialmente sin marco */
+  box-shadow: none;
+}
+
+.card-details {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.card:hover .card-image {
+  transform: scale(1.5); /* agranda la imagen */
+  border: 4px solid #61dafb; /* color destacado para marco */
+  box-shadow: 0 0 24px 6px #61dafb80, 0 4px 24px 1px rgba(0, 0, 0, 0.3);
+}
+
+.card:hover .card-details {
+  opacity: 1;
+  transform: scale(1.4); /* opcional para suavizar overlay */
+  pointer-events: auto;
+}
