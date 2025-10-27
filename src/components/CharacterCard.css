@@ -38,12 +38,12 @@
 }
 
 .card:hover .card-image {
-  transform: scale(1.6); /* agranda la imagen */
+  transform: scale(1.7); /* agranda la imagen */
   border: 7px solid #61dafb; /* color destacado para marco */
 }
 
 .card:hover .card-details {
   opacity: 1;
-  transform: scale(1.5); /* opcional para suavizar overlay */
+  transform: scale(1.6) translateX(-6px);
   pointer-events: auto;
 }

@@ -5,12 +5,13 @@ import "./CharacterCard.css";
 
 type Props = {
   character: Character;
+  onSelect: () => void;
 };
 
 //Presenta la imagen, nombre, estado y especie de un personaje.
-const CharacterCard: React.FC<Props> = ({ character }) => {
+const CharacterCard: React.FC<Props> = ({ character, onSelect }) => {
   return (
-    <div className="card">
+    <div className="card" onClick={onSelect} style={{ cursor: "pointer" }}>
       <img
         src={character.image}
         alt={character.name}

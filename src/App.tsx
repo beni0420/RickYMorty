@@ -9,7 +9,6 @@ const App: React.FC = () => (
   <div
     style={{
       fontFamily: "Arial, sans-serif",
-      background: "#111",
       minHeight: "100vh",
     }}
   >

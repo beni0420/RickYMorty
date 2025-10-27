@@ -3,6 +3,7 @@
 //Usa el hook useState para almacenar el array de personajes
 import React, { useEffect, useState } from "react";
 import type { Character } from "../types";
+import Modal from "../components/modal/Modal";
 
 //Renderiza el logo y, para cada personaje, una tarjeta usando el componente CharacterCard.
 
@@ -11,6 +12,9 @@ import logo from "../assets/Rick_and_Morty.webp";
 
 const CharacterList: React.FC = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(
+    null
+  );
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -35,14 +39,32 @@ const CharacterList: React.FC = () => {
           gap: "1rem",
         }}
       >
-        {characters
-          //quitamos en penúltimo porque la imagen no es la adecuada
-          .filter((_c, i, arr) => i < arr.length - 5)
-          .filter((_c, i, arr) => i !== arr.length - 2)
-          .map((c) => (
-            <CharacterCard key={c.id} character={c} />
-          ))}
+        {characters.slice(0, characters.length - 6).map((character) => (
+          <CharacterCard
+            key={character.id}
+            character={character}
+            onSelect={() => setSelectedCharacter(character)}
+          />
+        ))}
       </div>
+
+      <Modal
+        isOpen={!!selectedCharacter}
+        onClose={() => setSelectedCharacter(null)}
+      >
+        {selectedCharacter && (
+          <div style={{ textAlign: "center" }}>
+            <h2>{selectedCharacter.name}</h2>
+            <img
+              src={selectedCharacter.image}
+              alt={selectedCharacter.name}
+              style={{ width: "100%" }}
+            />
+            <p>Status: {selectedCharacter.status}</p>
+            <p>Species: {selectedCharacter.species}</p>
+          </div>
+        )}
+      </Modal>
     </div>
   );
 };
