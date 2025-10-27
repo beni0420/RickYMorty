@@ -14,7 +14,7 @@ const CharacterCard: React.FC<Props> = ({ character }) => {
       <img
         src={character.image}
         alt={character.name}
-        style={{ width: "180px", height: "auto" }}
+        style={{ width: "185px", height: "auto" }}
         className="card-image"
       />
       <div className="card-details">

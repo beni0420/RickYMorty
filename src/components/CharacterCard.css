@@ -2,7 +2,6 @@
   position: relative;
   width: 200px;
   overflow: visible;
-  transition: box-shadow 0.3s;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
   z-index: 1;
 }
@@ -39,13 +38,12 @@
 }
 
 .card:hover .card-image {
-  transform: scale(1.5); /* agranda la imagen */
-  border: 4px solid #61dafb; /* color destacado para marco */
-  box-shadow: 0 0 24px 6px #61dafb80, 0 4px 24px 1px rgba(0, 0, 0, 0.3);
+  transform: scale(1.6); /* agranda la imagen */
+  border: 7px solid #61dafb; /* color destacado para marco */
 }
 
 .card:hover .card-details {
   opacity: 1;
-  transform: scale(1.4); /* opcional para suavizar overlay */
+  transform: scale(1.5); /* opcional para suavizar overlay */
   pointer-events: auto;
 }
