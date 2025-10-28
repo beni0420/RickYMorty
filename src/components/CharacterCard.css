@@ -7,7 +7,7 @@
 }
 
 .card:hover {
-  z-index: 10; /* aparece encima de todas las demás */
+  z-index: 10;
 }
 
 .card-image {
@@ -15,7 +15,7 @@
   display: block;
   transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
   will-change: transform;
-  border: 3px solid transparent; /* Inicialmente sin marco */
+  border: 3px solid transparent;
   box-shadow: none;
 }
 
@@ -38,8 +38,8 @@
 }
 
 .card:hover .card-image {
-  transform: scale(1.7); /* agranda la imagen */
-  border: 7px solid #61dafb; /* color destacado para marco */
+  transform: scale(1.7);
+  border: 7px solid #61dafb;
 }
 
 .card:hover .card-details {

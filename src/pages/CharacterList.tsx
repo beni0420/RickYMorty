@@ -1,11 +1,6 @@
-//componente de página: obtiene la lista de personajes desde la API de Rick and Morty usando fetch y el hook useEffect.
-
-//Usa el hook useState para almacenar el array de personajes
 import React, { useEffect, useState } from "react";
 import type { Character } from "../types";
 import Modal from "../components/modal/Modal";
-
-//Renderiza el logo y, para cada personaje, una tarjeta usando el componente CharacterCard.
 
 import CharacterCard from "../components/CharacterCard";
 import logo from "../assets/Rick_and_Morty.webp";
@@ -24,10 +19,8 @@ const CharacterList: React.FC = () => {
 
   const handleSelect = (character: Character) => {
     if (character.id % 2 === 0) {
-      // Par: abrir modal
       setSelectedCharacter(character);
     } else {
-      // Impar: abrir ventana aparte
       const newTab = window.open("", "_blank");
       if (newTab) {
         newTab.document.title = character.name;

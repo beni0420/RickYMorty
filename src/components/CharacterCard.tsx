@@ -1,5 +1,4 @@
 import React from "react";
-//componente presentacional: recibe un objeto "character" como prop y renderiza una tarjeta para un solo personaje.
 import type { Character } from "../types";
 import "./CharacterCard.css";
 
@@ -8,7 +7,6 @@ type Props = {
   onSelect: () => void;
 };
 
-//Presenta la imagen, nombre, estado y especie de un personaje.
 const CharacterCard: React.FC<Props> = ({ character, onSelect }) => {
   return (
     <div className="card" onClick={onSelect} style={{ cursor: "pointer" }}>
