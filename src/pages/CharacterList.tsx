@@ -22,6 +22,48 @@ const CharacterList: React.FC = () => {
       .then((data) => setCharacters(data.results));
   }, []);
 
+  const handleSelect = (character: Character) => {
+    if (character.id % 2 === 0) {
+      // Par: abrir modal
+      setSelectedCharacter(character);
+    } else {
+      // Impar: abrir ventana aparte
+      const newTab = window.open("", "_blank");
+      if (newTab) {
+        newTab.document.title = character.name;
+
+        newTab.document.head.innerHTML = `
+        <style>
+          body {
+            margin: 0;
+            height: 100vh;
+            background-image: url('/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+          }
+          img {
+            max-width: 100%;
+            border-radius: 10px;
+          }
+        </style>
+      `;
+
+        newTab.document.body.innerHTML = `
+          <h1>${character.name}</h1>
+          <img src="${character.image}" style="max-width:100%" />
+          <p><strong>Status:</strong> ${character.status}</p>
+          <p><strong>Species:</strong> ${character.species}</p>
+        `;
+        newTab.focus();
+      }
+    }
+  };
+
   return (
     <div>
       <div style={{ textAlign: "center", marginBottom: 20 }}>
@@ -43,7 +85,7 @@ const CharacterList: React.FC = () => {
           <CharacterCard
             key={character.id}
             character={character}
-            onSelect={() => setSelectedCharacter(character)}
+            onSelect={() => handleSelect(character)}
           />
         ))}
       </div>
@@ -51,17 +93,21 @@ const CharacterList: React.FC = () => {
       <Modal
         isOpen={!!selectedCharacter}
         onClose={() => setSelectedCharacter(null)}
+        title={selectedCharacter?.name}
       >
         {selectedCharacter && (
           <div style={{ textAlign: "center" }}>
-            <h2>{selectedCharacter.name}</h2>
             <img
               src={selectedCharacter.image}
               alt={selectedCharacter.name}
-              style={{ width: "100%" }}
+              style={{ width: "100%", borderRadius: "15px" }}
             />
-            <p>Status: {selectedCharacter.status}</p>
-            <p>Species: {selectedCharacter.species}</p>
+            <p>
+              <strong>Status:</strong> {selectedCharacter.status}
+            </p>
+            <p>
+              <strong>Species:</strong> {selectedCharacter.species}
+            </p>
           </div>
         )}
       </Modal>
